@@ -8,19 +8,20 @@ public class CreditCalculation {
         this.percent = percent;
         this.period = period;
     }
-    public int myPayment() {
 
-        return 1;
+    public int myPayment() {
+        double P = percent / 100 / 12;
+        return (int) (credit * (P + (P / ((Math.pow((1 + P), period) - 1)))));
 
     }
 
     public int refundAmount(int payment) {
 
-        return payment;
+        return period * payment;
     }
 
     public int myOverpayment(int sum) {
 
-        return sum;
+        return sum - credit;
     }
 }
